@@ -1,0 +1,169 @@
+{% if type == 'block' %}
+  {% assign id = block.id %}
+  {% assign aspect_ratio = block.settings.aspect_ratio %}
+  {% assign autoplay = block.settings.autoplay %}
+  {% assign autoloop = block.settings.autoloop %}
+  {% assign video_dark_overlay = block.settings.video_dark_overlay %}
+  {% assign video = block.settings.video %}
+  {% assign mp4 = block.settings.mp4 %}
+  {% assign ogv = block.settings.ogv %}
+  {% assign headline_animation = block.settings.headline_animation %}
+  {% assign display_text_over_video = block.settings.display_text_over_video %}
+  {% assign title = block.settings.title %}
+  {% assign subtitle = block.settings.subtitle %}
+  {% assign text_position = block.settings.text_position %}
+  {% assign text_alignment = block.settings.text_alignment %}
+  {% assign button_label = block.settings.button_label %}
+  {% assign link = block.settings.link %}
+  {% assign homepage_arrow = block.settings.homepage_arrow %}
+  {% assign image = block.settings.image %}
+  {% assign parallax_effect = block.settings.parallax_effect %}
+  {% assign parallax_image_height = block.settings.parallax_image_height %}
+{% else %}
+  {% assign id = section.id %}
+  {% assign aspect_ratio = section.settings.aspect_ratio %}
+  {% assign autoplay = section.settings.autoplay %}
+  {% assign autoloop = section.settings.autoloop %}
+  {% assign video_dark_overlay = section.settings.video_dark_overlay %}
+  {% assign video = section.settings.video %}
+  {% assign mp4 = section.settings.mp4 %}
+  {% assign ogv = section.settings.ogv %}
+  {% assign headline_animation = section.settings.headline_animation %}
+  {% assign display_text_over_video = section.settings.display_text_over_video %}
+  {% assign title = section.settings.title %}
+  {% assign subtitle = section.settings.subtitle %}
+  {% assign text_position = section.settings.text_position %}
+  {% assign text_alignment = section.settings.text_alignment %}
+  {% assign button_label = section.settings.button_label %}
+  {% assign link = section.settings.link %}
+  {% assign homepage_arrow = section.settings.homepage_arrow %}
+  {% assign image = section.settings.image %}
+  {% assign parallax_effect = section.settings.parallax_effect %}
+  {% assign parallax_image_height = section.settings.parallax_image_height %}
+{% endif %}
+
+<section class="parallax-banner parallax-slide slide parallax_effect--{{ parallax_effect }} autoplay--{{ autoplay }}" id="video-{{ id }}">
+  <div class="lazyload bcg {% if image == nil %}bcg-placeholder{% endif %}"
+    {% if parallax_effect %}
+      {% if image != nil %}
+        data-bgset="  {{ image | img_url: '2048x' }} 2048w,
+                      {{ image | img_url: '1600x' }} 1600w,
+                      {{ image | img_url: '1200x' }} 1200w,
+                      {{ image | img_url: '1000x' }} 1000w,
+                      {{ image | img_url: '800x' }} 800w,
+                      {{ image | img_url: '600x' }} 600w,
+                      {{ image | img_url: '400x' }} 400w"
+        data-sizes="100vw"
+      {% else %}
+        style="background-image:url({{ 'placeholder.svg' | asset_url }})"
+      {% endif %}
+      data-bottom-top="background-position: 50% 10vh;"
+      data-top-bottom="background-position: 50% -10vh;"
+    {% endif %}
+      >
+    <div  class="homepage-video darken-video-{{ video_dark_overlay }}"
+          data-video-id="video-{{id}}"
+          data-uploaded-poster="{{ image | img_url: '1600x' }}"
+          data-autoplay="{{ autoplay }}"
+          data-autoloop="{{ autoloop }}"
+          data-video-text="{{ display_text_over_video }}"
+          >
+      <div class="homepage-video--media"
+        data-video-src="{{ video.id }}"
+        data-aspect-ratio="{{ aspect_ratio }}"
+        data-provider="{% if video.type != blank %}{{ video.type }}{% else %}{% if mp4 != blank %}html5{% else %}empty{% endif %}{% endif %}"
+        data-video-mp4="{{ mp4 }}"
+        data-video-ogv="{{ ogv }}"
+        >
+        <div class="hsContainer" {% if parallax_effect %}
+          data-play-video
+        {% endif %}>
+          {% if parallax_effect %}
+            <noscript>
+             <img   alt="{{ image.alt }}"
+                    src="{{ image | img_url: '2048x' }}"
+                    class="image__fallback"
+                    />
+            </noscript>
+          {% endif %}
+          <img  alt="{{ image.alt }}"
+                data-play-video
+                {% if image != nil %}
+                  src="{{ image | img_url: '300x' }}"
+                  data-src="{{ image | img_url: '2048x' }}"
+                  class="lazyload lazyload--fade-in hsContainer__image"
+                  sizes="100vw"
+                  srcset="  {{ image | img_url: '2048x' }} 2048w,
+                            {{ image | img_url: '1600x' }} 1600w,
+                            {{ image | img_url: '1200x' }} 1200w,
+                            {{ image | img_url: '1000x' }} 1000w,
+                            {{ image | img_url: '800x' }} 800w,
+                            {{ image | img_url: '600x' }} 600w,
+                            {{ image | img_url: '400x' }} 400w"
+                {% else %}
+                  src="{{ 'placeholder.svg' | asset_url }}"
+                  class="hsContainer__image"
+                {% endif %}
+                 />
+          <div class="hsContent caption js-caption">
+            <div class="container">
+              <div class="columns {% if text_position == 'left' %} eight offset-by-one {% elsif text_position == 'right' %} eight offset-by-eight {% else %} twelve offset-by-two {% endif %} align_{{ text_alignment }}">
+                <div class="{{ headline_animation }}">
+                  {% if title != blank %}
+                    <h1 class="headline">
+                      {{ title | escape }}
+                    </h1>
+                  {% endif %}
+                  {% if subtitle != blank %}
+                    <div class="subtitle">
+                      {{ subtitle }}
+                    </div>
+                  {% endif %}
+                  {% if button_label != blank %}
+                    <a {% if link != blank %}href="{{ link }}"{% endif %} class="action_button" {% if parallax_effect == false and link == blank %}
+                      data-play-video
+                    {% endif %}>
+                      {{ button_label | escape }}
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if homepage_arrow %}
+          <a href="#slide-{{ id }}-content" class="scroll-arrow animate_down">
+            <span class="icon-arrow-down"></span>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+<a name="slide-{{ id }}-content" id="slide-{{ id }}-content"></a>
+
+<style>
+  {% if parallax_effect %}
+    #video-{{ id }} .hsContainer {
+      height: {{ parallax_image_height }}px;
+    }
+  {% endif %}
+
+  {% if autoplay %}
+    #video-{{ id }} .bcg {
+      background: {{ settings.shop_bg_color }} !important;
+    }
+  {% endif %}
+
+  @media only screen and (max-width: 798px) {
+    {% if settings.slideshow_images_crop %}
+      #video-{{ id }} .hsContainer {
+        height: {{ parallax_image_height | divided_by: 2 }}px;
+      }
+    {% else %}
+      #video-{{ id }} .hsContainer {
+        height: auto;
+      }
+    {% endif %}
+  }
+</style>

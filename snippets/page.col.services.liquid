@@ -1,0 +1,126 @@
+<style>
+  .container .one-third.column img{width:100%;}
+</style>
+{% assign cols = content | split: '<!-- split -->' %}
+{% if cols.size == 2 %}
+<div class="eight columns alpha">
+  {{ cols[0] }}
+</div>
+<div class="eight columns omega">
+  {{ cols[1] }}
+</div>
+{% elsif cols.size == 3 %}
+<div class="one-third column alpha">
+  {{ cols[0] }}
+</div>
+<div class="one-third column">
+  {{ cols[1] }}
+</div>
+<div class="one-third column omega">
+  {{ cols[2] }}
+</div>
+{% elsif cols.size == 4 %}
+<div class="four columns alpha">
+  {{ cols[0] }}
+</div>
+<div class="four columns">
+  {{ cols[1] }}
+</div>
+<div class="four columns">
+  {{ cols[2] }}
+</div>
+<div class="four columns omega">
+  {{ cols[3] }}
+</div>
+{% elsif cols.size == 6 %}
+<div class="one-third column alpha">
+  {{ cols[0] }}
+</div>
+<div class="one-third column">
+  {{ cols[1] }}
+</div>
+<div class="one-third column omega">
+  {{ cols[2] }}
+</div>
+<div class="one-third column alpha">
+  {{ cols[3] }}
+</div>
+<div class="one-third column">
+  {{ cols[4] }}
+</div>
+<div class="one-third column omega">
+  {{ cols[5] }}
+</div>
+{% elsif cols.size == 7 %}
+<div class="sixteen columns">
+  {{ cols[0] }}
+</div>
+<div class="one-third column alpha">
+  {{ cols[1] }}
+</div>
+<div class="one-third column">
+  {{ cols[2] }}
+</div>
+<div class="one-third column omega">
+  {{ cols[3] }}
+</div>
+<div class="one-third column alpha">
+  {{ cols[4] }}
+</div>
+<div class="one-third column">
+  {{ cols[5] }}
+</div>
+<div class="one-third column omega">
+  {{ cols[6] }}
+</div>
+{% elsif cols.size > 7 && cols.size == 13 %}
+<div class="sixteen column">
+  {{ cols[0] }}
+</div>
+
+<br class="clear">
+<div class="one-third column alpha">
+  {{ cols[1] }}
+</div>
+<div class="one-third column">
+  {{ cols[2] }}
+</div>
+<div class="one-third column omega">
+  {{ cols[3] }}
+</div>
+<br class="clear">
+
+<div class="one-third column alpha">
+  {{ cols[4] }}
+</div>
+<div class="one-third column">
+  {{ cols[5] }}
+</div>
+<div class="one-third column omega">
+  {{ cols[6] }}
+</div>
+<br class="clear">
+
+<div class="one-third column alpha">
+  {{ cols[7] }}
+</div>
+<div class="one-third column">
+  {{ cols[8] }}
+</div>
+<div class="one-third column omega">
+  {{ cols[9] }}
+</div>
+<br class="clear">
+
+<div class="one-third column alpha">
+  {{ cols[10] }}
+</div>
+<div class="one-third column">
+  {{ cols[11] }}
+</div>
+<div class="one-third column omega">
+  {{ cols[12] }}
+</div>
+{% else %}
+{{ content }}
+{% endif %}

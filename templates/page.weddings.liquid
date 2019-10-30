@@ -1,0 +1,29 @@
+<div id="slide-page">
+    <div class="bcg"
+        data-bottom-top="background-position: 50% 200px;"
+        data-top-bottom="background-position: 50% -200px;"
+        data-anchor-target="#slide-page">
+        <div class="hsContainer">
+           
+        </div>
+    </div>
+</div>
+  <a name="pagecontent" id="pagecontent"></a>
+  <div class="container">
+  <br class="clear" />
+
+<div class="sixteen columns page clearfix">
+  <h1 class="center">
+    {{ page.title }}
+  </h1>
+  <div class="feature_divider"></div>
+
+  <div>
+    {% include 'page-multi-column', content: page.content %}
+  </div>
+</div>
+
+    <style>
+#slide-page .bcg {background-image:url("https://cdn.shopify.com/s/files/1/1190/7174/files/Wedding-catering-banner.jpg?13106954125811375418");}
+#slide-page .hsContainer { height: 300px; }
+    </style>

@@ -1,0 +1,204 @@
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+<div id="slide-page">
+    <div class="bcg"
+        data-bottom-top="background-position: 50% 200px;"
+        data-top-bottom="background-position: 50% -200px;"
+        data-anchor-target="#slide-page">
+        <div class="hsContainer">
+           
+        </div>
+    </div>
+</div>
+  <a name="pagecontent" id="pagecontent"></a>
+  <div class="container">
+  <br class="clear" />
+
+  <h1 class="center">
+    {{ page.title }}
+  </h1>
+  <div class="feature_divider"></div>
+
+  <div>
+    {% include 'page-multi-column', content: page.content %}
+  </div>
+
+    <style>
+#slide-page .bcg {background-image:url("https://cdn.shopify.com/s/files/1/1190/7174/files/AdobeStock_106658831.jpg?18140880713511635264");}
+#slide-page .hsContainer { height: 300px; }
+    </style>
+    
+    <p></p>
+  
+<div class="ten columns offset-by-three page clearfix">
+  {% if settings.slideshow_contact_enabled == false %}
+
+
+  {% endif %}
+  
+  {% form 'contact' %}
+
+
+    
+     <br class="clear" />
+     <div class="five columns alpha">
+      {% assign name_attr = 'contact.form.name' | handle %}
+      <label for="contactFormName">{{ 'contact.form.name' | t }} <span class="red">*</span></label>
+      <input type="text" id="contactFormName" name="contact[{{ name_attr }}]" placeholder="" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}" required="required">
+     </div>
+     <div class="five columns omega">
+      <label for="contactFormEmail">{{ 'contact.form.email' | t }} <span class="red">*</span></label>
+      <input type="email" id="contactFormEmail" name="contact[email]" placeholder="" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required="required">
+     </div>
+  
+  
+     <div class="five columns alpha">
+<label for="contactFormPhone">Phone Number <span class="red">*</span></label>
+<input type="text" id="contactFormPhone" name="contact[phone]" placeholder="" required="required">
+     </div>
+     <div class="five columns omega">
+     <label for="contactFormEvent">Event Date <span class="red">*</span></label>
+       <input type="text" id="datepicker" name="contact[event]" required="required">
+<script>
+$(function(){
+    $('#date').combodate();    
+});
+</script>
+     </div>
+
+         <div class="five columns alpha">
+<label for="contactFormAddress">Full Address of Event Venue / Location<span class="red">*</span></label>
+<input type="text" id="contactFormAddress" name="contact[address]" placeholder="" required="required">
+     </div>
+     <div class="five columns omega">
+     <label for="contactSuburbState">Suburb & State <span class="red">*</span> </label>
+<input type="text" id="contactState" name="contact[state]" placeholder="" required="required">
+     </div>
+    
+       <div class="five columns alpha">
+<label>Duration of Event <span class="red">*</span> </label>
+  <select id="contactFormDuration" name="contact[duration]" required="required">
+       <option value="">Please select</option>
+    <option value="0 to 4">0 - 4 hours</option>
+    <option value="4 to 5">4 - 5 hours</option>
+        <option value="5 to 6">5 - 6 hours</option>
+    <option value="6 to 7">6 - 7 hours</option>
+        <option value="7 plus">7+ hours</option>
+  </select>
+     </div>
+     <div class="five columns omega">
+     <label for="contactFormGuests">Number of Guests <span class="red">*</span> </label>
+<input type="text" id="contactFormGuests" name="contact[guests]" placeholder="" required="required">
+     </div>
+  
+         <div class="five columns alpha">
+<label>Which food catering option interests you? <span class="red">*</span> </label>
+  <select id="contactFormPackagetype" name="contact[package type]" required="required">
+           <option value="">Please select</option>
+        <option value="Canapes">Canape Package (VIC)</option>
+    <option value="Happy Camper">Happy Camper Pizza (VIC)</option>
+        <option value="Toasta">Toasta & Co (VIC)</option>
+    <option value="Von Crumb">Von Crumb (VIC)</option>
+            <option value="Gorilla Grill">Gorilla Grill (VIC)</option>
+            <option value="St Gerrys">St Gerrys (VIC)</option>
+            <option value="Inbocca">Inbocca (NSW)</option>
+                <option value="Inbocca">Cantina Movil (NSW)</option>
+  </select>
+     </div>
+     <div class="five columns omega">
+<label>Which drinks package interests you? <span class="red">*</span> </label>
+  <select id="contactFormPackagetype" name="contact[package type]" required="required">
+           <option value="">Please select</option>
+    <option value="House">House - From $25 per head</option>
+        <option value="House">Ceremony - From $28 per head</option>
+    <option value="Classic">Classic - From $30 per head</option>
+        <option value="Craft">Craft - From $35 per head</option>
+    <option value="Premium">Premium - From $40 per head</option>
+        <option value="Cocktail">Cocktail Bar - From $40 per head</option>
+            <option value="Cocktails Canapes">Cocktail and Canape - From $90 per head</option>
+            <option value="Something Else">Something else - Contact me to discuss</option>
+  </select>
+     </div>
+  
+           <div class="five columns alpha">
+<label>Your approximate budget? <span class="red">*</span> </label>
+  <select id="contactBudget" name="contact[budget]" required="required">
+           <option value="">Please select</option>
+    <option value="Up to 1000">Up to $1000</option>
+        <option value="1000-2000">$1000 - $2000</option>
+    <option value="2000-5000">$2000 - $5000</option>
+        <option value="5000 plus">$5000+</option>
+
+  </select>
+     </div>
+     <div class="five columns omega">
+<label>When is the best time for us to call you? <span class="red">*</span> </label>
+  <select id="contactPhoneTime" name="contact[phone time]" required="required">
+           <option value="">Please select</option>
+    <option value="Morning">Morning</option>
+        <option value="Lunchtime">Lunchtime</option>
+    <option value="Afternoon">Afternoon</option>
+  </select>
+     </div>       
+    
+    
+     {% comment %}
+      {% assign name_attr = 'contact.form.phone' | t | handle %}
+      <label for="contactFormPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
+      <input type="tel" id="contactFormPhone" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+      {% endcomment %}
+  
+    <label for="contactFormMessage">{{ 'contact.form.message' | t }} </label>
+    <textarea rows="5" id="contactFormMessage" name="contact[body]" placeholder="" required="required">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+    
+  <input type="submit" class="submit action_button add_to_cart" value="{{ 'contact.form.send' | t }}" />
+  <p>
+        {% if form.posted_successfully? %}
+         
+		<script>
+		window.location = "/pages/thank-you";
+		</script>
+        {% endif %}
+
+    {% if form.errors %}
+      <p class="quote">{{ 'general.forms.post_error' | t }}</p>
+
+     {% assign message = 'contact.form.message' | t %}
+      <ul class="center">
+        {% for field in form.errors %}
+          {% if field == 'form' %}
+            <li>
+              {{ form.errors.messages[field] }}
+            </li>
+          {% else %}
+            <li>
+              {% assign field_name = field | replace: 'body', message %}
+              {{ 'general.forms.post_field_error_html' | t: field: field_name, error: form.errors.messages[field] }}
+            </li>
+          {% endif %}
+        {% endfor %}
+       </ul>
+    {% endif %}
+  {% endform %}
+</div>
+
+  
+{% if settings.contact_address != blank %}
+  <br class="clear" />
+  </div>
+  <div class="embed-container maps">
+    <iframe width="100%" height="220" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q={{ settings.contact_address | replace: ' ', '+' }}&amp;z={{ settings.zoom_level }}&amp;output=embed"></iframe>
+  </div>
+  <div class="container" style="padding:0">
+{% endif %}
+

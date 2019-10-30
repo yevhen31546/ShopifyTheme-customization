@@ -1,0 +1,71 @@
+  <div class="feature_divider"></div>
+
+
+  <div class="bannertitle3"><h1 class="center">
+    {{ page.title }}
+    </h1></div>
+  <a name="pagecontent" id="pagecontent"></a>
+
+  <div class="container" >
+  <br class="clear" />
+
+<div class="sixteen columns  page clearfix">
+  
+  <div class="feature_divider"></div>
+  <div>
+    {% include 'page.col.services', content: page.content %}
+  </div>
+</div>
+ 
+    <style>
+#slide-page .bcg {background-image:url("https://cdn.shopify.com/s/files/1/1190/7174/files/kegsfoodbg.jpg?44");}
+#slide-page .hsContainer { height: 300px; }
+    </style>
+ <p></p>
+    
+ <div class="sixteen columns page clearfix"> 
+
+  {% if settings.slideshow_contact_enabled == false %}
+
+  {% endif %}
+    </div>
+</div>
+
+<div  style="    background: #f7f7f7;    width: 100%;    max-width: 100%; padding-bottom: 100px; padding-top: 40px; margin-top:80px" >
+  <div class="container" >
+   <div class="sixteen columns page clearfix"> 
+ <br>
+  <br>
+  <div>
+    <center> <h3>PARTY NOW PAY LATER</h3></center></div>
+    <div><center>
+In addition to our simple, stress free drinks catering solutions, we've also made it easier for you to manage your budget by booking your event today, without needing to pay a deposit upfront.
+
+Kegs on Legs has teamed up with zipMoney, giving you the option to book today and make interest-free repayments over a period of up to 6 months. If you'd like to find out more about how to finance your drinks catering with zipMoney just let us know and we'll send through some information along with your quote.
+  </center></div>
+  <br>
+  <div>
+    <center><h3>REQUEST A QUOTE</h3></center></div>
+      <div>
+<center>For more information about our catering services, please send us your event details below and we'll be in touch.</center>
+  </div>
+    <br>
+    </div>
+    
+   <div class="ten columns offset-by-three page clearfix">  
+    <div class="pipedriveWebForms" data-pd-webforms="https://pipedrivewebforms.com/form/6664f9fbb576547617aad39a682864b85732294"><script src="https://cdn.pipedriveassets.com/web-form-assets/webforms.min.js"></script></div>
+   </div>
+    
+  
+</div>
+  </div>
+
+  
+{% if settings.contact_address != blank %}
+  <br class="clear" />
+  </div>
+  <div class="embed-container maps">
+    <iframe width="100%" height="220" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q={{ settings.contact_address | replace: ' ', '+' }}&amp;z={{ settings.zoom_level }}&amp;output=embed"></iframe>
+  </div>
+  <div class="container" style="padding:0">
+{% endif %}
